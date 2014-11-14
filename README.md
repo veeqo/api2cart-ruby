@@ -1,4 +1,4 @@
-# Api2cart::Ruby
+# Api2cart
 
 TODO: Write a gem description
 
