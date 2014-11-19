@@ -40,3 +40,4 @@ build/
 *.o
 *.a
 mkmf.log
+/eproject.cfg
