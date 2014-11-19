@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Tom Procter", "Daniel Vartanov"].sort
   spec.email         = ["tom@procterweb.co.uk", "dan@vartanov.net"]
 
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Ruby client for API2Cart}
+  spec.description   = %q{Ruby client for API2Cart with proxy support}
   spec.homepage      = "https://github.com/DanielVartanov/api2cart-ruby"
   spec.license       = "MIT"
 
