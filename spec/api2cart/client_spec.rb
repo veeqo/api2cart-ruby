@@ -12,7 +12,7 @@ describe Api2cart::Client do
     describe '#successful?' do
       subject { api2cart_client.successful? }
 
-      it { is_expected.to be_truthy }
+      it { is_expected.to be true }
     end
 
     describe '#error_message' do
@@ -36,7 +36,7 @@ describe Api2cart::Client do
     describe '#successful?' do
       subject { api2cart_client.successful? }
 
-      it { is_expected.to be_falsey }
+      it { is_expected.to be false }
     end
 
     describe '#error_message' do
