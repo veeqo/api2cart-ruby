@@ -1,12 +1,14 @@
 # Api2cart
 
-TODO: Write a gem description
+Ruby client for [API2Cart](https://www.api2cart.com/) with proxy support, fully covered with tests.
+The DSL is similar to DSL of [original gem](https://rubygems.org/gems/API2Cart) therefore migration is easy.
+
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'api2cart-ruby'
+    gem 'api2cart-ruby', require: 'api2cart'
 
 And then execute:
 
@@ -18,12 +20,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+Api2cart::Store.new(api_key, store_key).product_count
+# => { 'products_count' => 76 }
+```
 
-## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/api2cart-ruby/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+Sponsored by [Veeqo](https://github.com/veeqo)
