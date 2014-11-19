@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api2cart do
+describe Api2cart::Store do
   context 'when request is successful', vcr: { cassette_name: 'successful_request' } do
     let(:api_key) { '43ba7043badfa2cd31cfaf5dc601a884' }
     let(:store_key) { '6f00bbf49f5ada8156506aba161408c6' }

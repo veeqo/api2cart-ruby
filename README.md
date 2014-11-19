@@ -25,5 +25,11 @@ Api2cart::Store.new(api_key, store_key).product_count
 # => { 'products_count' => 76 }
 ```
 
+With proxy:
+
+```ruby
+Api2cart::Store.new(api_key, store_key, proxy: 'http://anti-throttling-proxy.local:1080').product_count
+# => { 'products_count' => 76 }
+```
 
 Sponsored by [Veeqo](https://github.com/veeqo)
