@@ -13,8 +13,11 @@ module Api2cart
     protected
 
     def full_path
-      dotted_method_name = method_name.to_s.gsub('_', '.')
       "#{PATH_BASE}/#{dotted_method_name}.json"
+    end
+
+    def dotted_method_name
+      method_name.to_s.gsub('_', '.')
     end
 
     def query_string
