@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.api2cart.com/v1.0/product.count.json?api_key=43ba7043badfa2cd31cfaf5dc601a884&store_key=6f00bbf49f5ada8156506aba161408c6
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Host:
+      - api.api2cart.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 19 Nov 2014 10:20:29 GMT
+      Server:
+      - Apache/2.2.27 (Unix) mod_ssl/2.2.27 OpenSSL/1.0.1e-fips mod_bwlimited/1.4
+        mod_fcgid/2.3.9
+      X-Powered-By:
+      - PHP/5.3.28
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - PHPSESSID=b1ea7d1fe638a3d718f4f13215204054; expires=Wed, 19-Nov-2014 12:20:29
+        GMT; path=/
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Headers:
+      - origin, x-requested-with, content-type
+      Access-Control-Allow-Methods:
+      - PUT, GET, POST, DELETE, OPTIONS
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"return_code" : 0, "return_message": "", "result" : {"products_count":76}}'
+    http_version: 
+  recorded_at: Wed, 19 Nov 2014 10:20:29 GMT
+recorded_with: VCR 2.9.3
