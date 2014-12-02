@@ -20,16 +20,16 @@ module Api2cart
       response_json['result']
     end
 
+    def return_code
+      response_json['return_code']
+    end
+
     protected
 
     attr_accessor :response_body
 
     def response_json
       @response_json ||= JSON.parse response_body
-    end
-
-    def return_code
-      response_json['return_code']
     end
 
     def parsed_proxy_url

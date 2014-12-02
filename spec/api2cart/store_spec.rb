@@ -11,10 +11,31 @@ describe Api2cart::Store do
   end
 
   context 'when response contains an error', vcr: { cassette_name: 'erroneous_request' } do
-    it 'raises an exception with correspondent message' do
-      expect {
-        Api2cart::Store.new('wrong', 'even more wrong').product_count
-      }.to raise_error('Incorrect API Key')
+    context 'specific case' do
+      it 'raises an exception with correspondent message' do
+        expect {
+          Api2cart::Store.new('wrong', 'even more wrong').product_count
+        }.to raise_error(Api2cart::Errors::IncorrectApiKey, 'Incorrect API Key')
+      end
+    end
+
+    context 'general case' do
+      let(:api2cart_store) { Api2cart::Store.new('wrong', 'even more wrong') }
+      let(:error_class) { double }
+
+      subject{ api2cart_store.product_count }
+
+      before do
+        allow_any_instance_of(Api2cart::Client).to receive(:return_code).and_return('9')
+        allow_any_instance_of(Api2cart::Client).to receive(:error_message).and_return('Something went wrong')
+        allow(Api2cart::ErrorClassRecognizer).to receive(:call).with('9').and_return(error_class)
+      end
+
+      it 'should call for ErrorClassRecognizer' do
+        expect_any_instance_of(Kernel).to receive(:raise).with(error_class, 'Something went wrong')
+
+        subject
+      end
     end
   end
 end

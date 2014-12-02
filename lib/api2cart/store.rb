@@ -17,7 +17,7 @@ module Api2cart
       if api2cart_client.successful?
         api2cart_client.result
       else
-        raise api2cart_client.error_message
+        raise ErrorClassRecognizer.call(api2cart_client.return_code.to_s), api2cart_client.error_message
       end
     end
   end
