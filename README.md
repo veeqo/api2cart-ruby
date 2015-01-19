@@ -32,4 +32,10 @@ Api2cart::Store.new(api_key, store_key, proxy: 'http://anti-throttling-proxy.loc
 # => { 'products_count' => 76 }
 ```
 
+## Contributors
+
+* [Anton Pershakov](https://github.com/main24)
+* [Daniel Vartanov](https://github.com/DanielVartanov)
+* [Tom Procter](https://github.com/TDProcter)
+
 Sponsored by [Veeqo](https://github.com/veeqo)

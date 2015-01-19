@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "api2cart-ruby"
   spec.version       = Api2cart::VERSION
 
-  spec.authors       = ["Tom Procter", "Daniel Vartanov"].sort
+  spec.authors       = ["Tom Procter", "Daniel Vartanov", "Anton Pershakov"].sort
   spec.email         = ["tom@procterweb.co.uk", "dan@vartanov.net"]
 
   spec.summary       = %q{Ruby client for API2Cart}
