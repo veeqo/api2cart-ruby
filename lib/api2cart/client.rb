@@ -4,8 +4,10 @@ require 'active_support/core_ext/object/blank'
 
 module Api2cart
   class Client < Struct.new(:request_url, :proxy_url)
+    READ_TIMEOUT = 2000
+
     def make_request!
-      self.response_body = net_http_class.get_response(request_url).body
+      self.response_body = net_http.get(request_url.request_uri).body
     end
 
     def successful?
@@ -36,10 +38,14 @@ module Api2cart
       @parsed_proxy_url ||= URI.parse proxy_url
     end
 
-    def net_http_class
-      proxy_url.present? ?
-        Net::HTTP::Proxy(parsed_proxy_url.host, parsed_proxy_url.port) :
-        Net::HTTP
+    def net_http
+      if proxy_url.present?
+        Net::HTTP.new request_url.host, request_url.port, parsed_proxy_url.host, parsed_proxy_url.port
+      else
+        Net::HTTP.new request_url.host, request_url.port
+      end.tap do |net_http|
+        net_http.read_timeout = READ_TIMEOUT
+      end
     end
   end
 end
