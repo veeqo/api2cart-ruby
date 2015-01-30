@@ -4,7 +4,7 @@ require 'active_support/core_ext/object/blank'
 
 module Api2cart
   class Client < Struct.new(:request_url, :proxy_url)
-    READ_TIMEOUT = 2000
+    READ_TIMEOUT = 999999
 
     def make_request!
       self.response_body = net_http.get(request_url.request_uri).body
