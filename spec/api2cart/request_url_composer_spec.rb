@@ -24,8 +24,22 @@ describe Api2cart::RequestUrlComposer do
   describe 'domain' do
     subject { composed_url.host }
 
-    specify do
-      expect(subject).to eq('api.api2cart.com')
+    context 'when host is default' do
+      specify do
+        expect(subject).to eq('api.api2cart.com')
+      end
+    end
+
+    context 'when host is configured' do
+      let!(:current_host) { Api2cart.host }
+
+      before { Api2cart.configure{ |config| config.host = 'host.com' } }
+
+      specify do
+        expect(subject).to eq('host.com')
+      end
+
+      after { Api2cart.configure{ |config| config.host = current_host } }
     end
   end
 
@@ -64,8 +78,22 @@ describe Api2cart::RequestUrlComposer do
   describe 'all together' do
     subject { composed_url.to_s }
 
-    it do
-      is_expected.to eq 'http://api.api2cart.com/v1.0/order.list.json?api_key=43ba7043badfa2cd31cfaf5dc601a884&count=10&params=force_all&start=20&store_key=6f00bbf49f5ada8156506aba161408c6'
+    context 'when host is default' do
+      it do
+        is_expected.to eq 'http://api.api2cart.com/v1.0/order.list.json?api_key=43ba7043badfa2cd31cfaf5dc601a884&count=10&params=force_all&start=20&store_key=6f00bbf49f5ada8156506aba161408c6'
+      end
+    end
+
+    context 'when host is configured' do
+      let!(:current_host) { Api2cart.host }
+
+      before { Api2cart.configure{ |config| config.host = 'host.com' } }
+
+      it do
+        is_expected.to eq 'http://host.com/v1.0/order.list.json?api_key=43ba7043badfa2cd31cfaf5dc601a884&count=10&params=force_all&start=20&store_key=6f00bbf49f5ada8156506aba161408c6'
+      end
+
+      after { Api2cart.configure{ |config| config.host = current_host } }
     end
   end
 
