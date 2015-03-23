@@ -9,7 +9,9 @@ require 'api2cart/error_class_recognizer'
 module Api2cart
   include ActiveSupport::Configurable
 
-  config_accessor :host do
-    'api.api2cart.com'
+  config_accessor :host
+
+  self.configure do |config|
+    config.host = 'api.api2cart.com'
   end
 end
