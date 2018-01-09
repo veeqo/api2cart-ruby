@@ -32,6 +32,15 @@ Api2cart::Store.new(api_key, store_key, proxy: 'http://anti-throttling-proxy.loc
 # => { 'products_count' => 76 }
 ```
 
+## Configuration
+
+```ruby
+Api2cart.configure do |c|
+  c.host = 'custom.example.com' # default is 'api.api2cart.com'
+  c.api_version = '1.1'         # default is '1.0'
+end
+```
+
 ## Contributors
 
 * [Anton Pershakov](https://github.com/main24)

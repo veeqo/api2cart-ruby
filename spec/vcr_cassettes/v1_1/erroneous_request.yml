@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.api2cart.com/v1.1/product.count.json?api_key=wrong&store_key=even%20more%20wrong
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 09 Jan 2018 17:36:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - PHP/7.0.22
+      Set-Cookie:
+      - PHPSESSID=jn45hst5rmj1bl5m9th6f6e2k6; path=/
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+    body:
+      encoding: ASCII-8BIT
+      string: '{"return_code" : 2, "return_message": "Incorrect API Key", "result"
+        : {}}'
+    http_version: 
+  recorded_at: Tue, 09 Jan 2018 17:36:41 GMT
+recorded_with: VCR 4.0.0
