@@ -1,9 +1,13 @@
 require 'uri'
 require 'active_support/core_ext/object/to_query'
+require 'active_support/core_ext/module/delegation'
 
 module Api2cart
   class RequestUrlComposer < Struct.new(:api_key, :store_key, :method_name, :query_params)
-    PATH_BASE = '/v1.0'
+
+    delegate  :host,
+              :api_version,
+              to: :Api2cart
 
     def compose_request_url
       URI::HTTP.build host: host, path: full_path, query: query_string
@@ -11,12 +15,8 @@ module Api2cart
 
     protected
 
-    def host
-      Api2cart.host
-    end
-
     def full_path
-      "#{PATH_BASE}/#{dotted_method_name}.json"
+      "/v#{api_version}/#{dotted_method_name}.json"
     end
 
     def dotted_method_name

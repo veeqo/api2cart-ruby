@@ -46,16 +46,38 @@ describe Api2cart::RequestUrlComposer do
   describe 'path' do
     subject { composed_url.path }
 
-    it 'contains API version in the beginning' do
-      expect(subject).to start_with('/v1.0')
+    context 'when API version is default' do
+      it 'contains API version in the beginning' do
+        expect(subject).to start_with('/v1.0')
+      end
+
+      it 'contains method name translating underscores to dots' do
+        expect(subject).to start_with('/v1.0/order.list')
+      end
+
+      it 'contains indicator of JSON format' do
+        expect(subject).to start_with('/v1.0/order.list.json')
+      end
     end
 
-    it 'contains method name translating underscores to dots' do
-      expect(subject).to start_with('/v1.0/order.list')
-    end
+    context 'when API version is configured' do
+      let!(:current_api_version) { Api2cart.api_version }
 
-    it 'contains indicator of JSON format' do
-      expect(subject).to start_with('/v1.0/order.list.json')
+      before { Api2cart.configure{ |config| config.api_version = '1.1' } }
+
+      it 'contains API version in the beginning' do
+        expect(subject).to start_with('/v1.1')
+      end
+
+      it 'contains method name translating underscores to dots' do
+        expect(subject).to start_with('/v1.1/order.list')
+      end
+
+      it 'contains indicator of JSON format' do
+        expect(subject).to start_with('/v1.1/order.list.json')
+      end
+
+      after { Api2cart.configure{ |config| config.api_version = current_api_version } }
     end
   end
 
@@ -94,6 +116,18 @@ describe Api2cart::RequestUrlComposer do
       end
 
       after { Api2cart.configure{ |config| config.host = current_host } }
+    end
+
+    context 'when API version is configured' do
+      let!(:current_api_version) { Api2cart.api_version }
+
+      before { Api2cart.configure{ |config| config.api_version = '1.1' } }
+
+      it do
+        is_expected.to eq 'http://api.api2cart.com/v1.1/order.list.json?api_key=43ba7043badfa2cd31cfaf5dc601a884&count=10&params=force_all&start=20&store_key=6f00bbf49f5ada8156506aba161408c6'
+      end
+
+      after { Api2cart.configure{ |config| config.api_version = current_api_version } }
     end
   end
 
