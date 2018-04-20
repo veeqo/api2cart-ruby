@@ -10,7 +10,7 @@ module Api2cart
               to: :Api2cart
 
     def compose_request_url
-      URI::HTTP.build host: host, path: full_path, query: query_string
+      URI::HTTPS.build host: host, path: full_path, query: query_string
     end
 
     protected

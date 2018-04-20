@@ -45,6 +45,7 @@ module Api2cart
         Net::HTTP.new request_url.host, request_url.port
       end.tap do |net_http|
         net_http.read_timeout = READ_TIMEOUT
+        net_http.use_ssl = true
       end
     end
   end

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.api2cart.com/v1.1/product.count.json?api_key=43ba7043badfa2cd31cfaf5dc601a884&store_key=6f00bbf49f5ada8156506aba161408c6
+    uri: https://api.api2cart.com/v1.1/product.count.json?api_key=43ba7043badfa2cd31cfaf5dc601a884&store_key=6f00bbf49f5ada8156506aba161408c6
     body:
       encoding: US-ASCII
       string: ''

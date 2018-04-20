@@ -17,7 +17,7 @@ describe Api2cart::RequestUrlComposer do
     subject { composed_url.scheme }
 
     specify do
-      expect(subject).to eq('http')
+      expect(subject).to eq('https')
     end
   end
 
@@ -102,7 +102,7 @@ describe Api2cart::RequestUrlComposer do
 
     context 'when host is default' do
       it do
-        is_expected.to eq 'http://api.api2cart.com/v1.0/order.list.json?api_key=43ba7043badfa2cd31cfaf5dc601a884&count=10&params=force_all&start=20&store_key=6f00bbf49f5ada8156506aba161408c6'
+        is_expected.to eq 'https://api.api2cart.com/v1.0/order.list.json?api_key=43ba7043badfa2cd31cfaf5dc601a884&count=10&params=force_all&start=20&store_key=6f00bbf49f5ada8156506aba161408c6'
       end
     end
 
@@ -112,7 +112,7 @@ describe Api2cart::RequestUrlComposer do
       before { Api2cart.configure{ |config| config.host = 'host.com' } }
 
       it do
-        is_expected.to eq 'http://host.com/v1.0/order.list.json?api_key=43ba7043badfa2cd31cfaf5dc601a884&count=10&params=force_all&start=20&store_key=6f00bbf49f5ada8156506aba161408c6'
+        is_expected.to eq 'https://host.com/v1.0/order.list.json?api_key=43ba7043badfa2cd31cfaf5dc601a884&count=10&params=force_all&start=20&store_key=6f00bbf49f5ada8156506aba161408c6'
       end
 
       after { Api2cart.configure{ |config| config.host = current_host } }
@@ -124,7 +124,7 @@ describe Api2cart::RequestUrlComposer do
       before { Api2cart.configure{ |config| config.api_version = '1.1' } }
 
       it do
-        is_expected.to eq 'http://api.api2cart.com/v1.1/order.list.json?api_key=43ba7043badfa2cd31cfaf5dc601a884&count=10&params=force_all&start=20&store_key=6f00bbf49f5ada8156506aba161408c6'
+        is_expected.to eq 'https://api.api2cart.com/v1.1/order.list.json?api_key=43ba7043badfa2cd31cfaf5dc601a884&count=10&params=force_all&start=20&store_key=6f00bbf49f5ada8156506aba161408c6'
       end
 
       after { Api2cart.configure{ |config| config.api_version = current_api_version } }
@@ -137,7 +137,7 @@ describe Api2cart::RequestUrlComposer do
     let(:request_url_composer) { Api2cart::RequestUrlComposer.new(api_key, store_key, :product_count, nil) }
 
     it 'just does not add them to URL query' do
-      is_expected.to eq 'http://api.api2cart.com/v1.0/product.count.json?api_key=43ba7043badfa2cd31cfaf5dc601a884&store_key=6f00bbf49f5ada8156506aba161408c6'
+      is_expected.to eq 'https://api.api2cart.com/v1.0/product.count.json?api_key=43ba7043badfa2cd31cfaf5dc601a884&store_key=6f00bbf49f5ada8156506aba161408c6'
     end
   end
 end
