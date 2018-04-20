@@ -13,7 +13,7 @@ describe Api2cart do
       end
 
       it 'extracts hostname and port from proxy URL' do
-        expect(Net::HTTP).to receive(:new).with('api.api2cart.com', 80, 'anti-throttling-proxy.local', 1080).and_call_original
+        expect(Net::HTTP).to receive(:new).with('api.api2cart.com', 443, 'anti-throttling-proxy.local', 1080).and_call_original
         store_with_proxy.product_count
       end
     end
@@ -37,7 +37,7 @@ describe Api2cart do
       end
 
       it 'extracts hostname and port from proxy URL' do
-        expect(Net::HTTP).to receive(:new).with('api.api2cart.com', 80, 'anti-throttling-proxy.local', 1080).and_call_original
+        expect(Net::HTTP).to receive(:new).with('api.api2cart.com', 443, 'anti-throttling-proxy.local', 1080).and_call_original
         store_with_proxy.product_count
       end
     end

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.api2cart.com/v1.1/product.count.json?api_key=wrong&store_key=even%20more%20wrong
+    uri: https://api.api2cart.com/v1.1/product.count.json?api_key=wrong&store_key=even%20more%20wrong
     body:
       encoding: US-ASCII
       string: ''
