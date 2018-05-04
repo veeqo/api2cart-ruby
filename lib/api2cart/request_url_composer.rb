@@ -20,7 +20,7 @@ module Api2cart
     end
 
     def dotted_method_name
-      method_name.to_s.gsub('_', '.')
+      method_name.to_s.gsub('__', '-').gsub('_', '.').gsub('-', '_')
     end
 
     def query_string
