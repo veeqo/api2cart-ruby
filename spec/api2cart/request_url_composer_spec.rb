@@ -58,6 +58,14 @@ describe Api2cart::RequestUrlComposer do
       it 'contains indicator of JSON format' do
         expect(subject).to start_with('/v1.0/order.list.json')
       end
+
+      context 'when method name contains doubled underscores' do
+        let(:method_name) { :product_child__item_list }
+  
+        it 'converts doubled underscores to single' do
+          expect(subject).to start_with('/v1.0/product.child_item.list')
+        end
+      end
     end
 
     context 'when API version is configured' do
@@ -75,6 +83,14 @@ describe Api2cart::RequestUrlComposer do
 
       it 'contains indicator of JSON format' do
         expect(subject).to start_with('/v1.1/order.list.json')
+      end
+
+      context 'when method name contains doubled underscores' do
+        let(:method_name) { :product_child__item_list }
+  
+        it 'converts doubled underscores to single' do
+          expect(subject).to start_with('/v1.1/product.child_item.list')
+        end
       end
 
       after { Api2cart.configure{ |config| config.api_version = current_api_version } }
