@@ -41,3 +41,5 @@ build/
 *.a
 mkmf.log
 /eproject.cfg
+
+.DS_Store
