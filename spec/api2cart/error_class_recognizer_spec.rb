@@ -11,9 +11,10 @@ describe Api2cart::ErrorClassRecognizer, '.call' do
       expect( described_class.call('4') ).to eq Api2cart::Errors::StoreAccessDenied
       expect( described_class.call('5') ).to eq Api2cart::Errors::ApiAccessDenied
       expect( described_class.call('6') ).to eq Api2cart::Errors::ApiKeyDisabled
-      expect( described_class.call('7') ).to eq Api2cart::Errors::TooManyRequests
+      expect( described_class.call('7') ).to eq Api2cart::Errors::StoreRequestLimitExceeded
       expect( described_class.call('8') ).to eq Api2cart::Errors::StoreAlreadyExists
       expect( described_class.call('9') ).to eq Api2cart::Errors::InternalServiceError
+      expect( described_class.call('10') ).to eq Api2cart::Errors::OverallRequestLimitExceeded
       expect( described_class.call('100') ).to eq Api2cart::Errors::IncorrectApiRequest
       expect( described_class.call('101') ).to eq Api2cart::Errors::StoreNotFound
       expect( described_class.call('102') ).to eq Api2cart::Errors::IncorrectFtpAccess

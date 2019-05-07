@@ -25,9 +25,12 @@ module Api2cart
     class StoreAccessDenied < Api2cartException; end
     class ApiAccessDenied < Api2cartException; end
     class ApiKeyDisabled < Api2cartException; end
-    class TooManyRequests < Api2cartException; end
     class StoreAlreadyExists < Api2cartException; end
     class InternalServiceError < Api2cartException; end
     class UnknownError < Api2cartException; end
+
+    class TooManyRequests < Api2cartException; end
+    class StoreRequestLimitExceeded < TooManyRequests; end
+    class OverallRequestLimitExceeded < TooManyRequests; end
   end
 end
